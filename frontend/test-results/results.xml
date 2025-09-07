@@ -1,0 +1,1740 @@
+<testsuites id="" name="" tests="140" failures="140" skipped="0" errors="0" time="2179.259873">
+<testsuite name="auth-flows.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="chromium" tests="25" failures="25" skipped="0" time="630.092" errors="0">
+<testcase name="Authentication Flows › User Registration Flow › should successfully register a new user" classname="auth-flows.spec.ts" time="35.983">
+<failure message="auth-flows.spec.ts:38:9 should successfully register a new user" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:38:9 › Authentication Flows › User Registration Flow › should successfully register a new user 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=Sign Up')
+
+
+      38 |     test('should successfully register a new user', async ({ page }) => {
+      39 |       // Navigate to registration page
+    > 40 |       await page.click('text=Sign Up')
+         |                  ^
+      41 |       await expect(page).toHaveURL('/register')
+      42 |
+      43 |       // Fill registration form
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:40:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--cec74-ssfully-register-a-new-user-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate required fields" classname="auth-flows.spec.ts" time="36.426">
+<failure message="auth-flows.spec.ts:66:9 should validate required fields" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:66:9 › Authentication Flows › User Registration Flow › should validate required fields 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="register-button"]')
+
+
+      68 |
+      69 |       // Try to submit without filling required fields
+    > 70 |       await page.click('[data-testid="register-button"]')
+         |                  ^
+      71 |
+      72 |       // Should show validation errors
+      73 |       await expect(page.locator('[data-testid="email-error"]')).toContainText('Email is required')
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:70:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--5c0bc-ld-validate-required-fields-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate password strength" classname="auth-flows.spec.ts" time="36.019">
+<failure message="auth-flows.spec.ts:78:9 should validate password strength" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:78:9 › Authentication Flows › User Registration Flow › should validate password strength 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      79 |       await page.goto('/register')
+      80 |
+    > 81 |       await page.fill('[data-testid="email-input"]', newUser.email)
+         |                  ^
+      82 |       await page.fill('[data-testid="password-input"]', 'weak')
+      83 |       await page.fill('[data-testid="business-idea-input"]', newUser.businessIdea)
+      84 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:81:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--1c882--validate-password-strength-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--1c882--validate-password-strength-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--1c882--validate-password-strength-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--1c882--validate-password-strength-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--1c882--validate-password-strength-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--1c882--validate-password-strength-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should handle duplicate email registration" classname="auth-flows.spec.ts" time="35.519">
+<failure message="auth-flows.spec.ts:90:9 should handle duplicate email registration" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:90:9 › Authentication Flows › User Registration Flow › should handle duplicate email registration 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      92 |
+      93 |       // Try to register with existing email
+    > 94 |       await page.fill('[data-testid="email-input"]', testUser.email)
+         |                  ^
+      95 |       await page.fill('[data-testid="password-input"]', newUser.password)
+      96 |       await page.fill('[data-testid="business-idea-input"]', newUser.businessIdea)
+      97 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:94:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--f7a0f-uplicate-email-registration-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should successfully login with valid credentials" classname="auth-flows.spec.ts" time="36.291">
+<failure message="auth-flows.spec.ts:105:9 should successfully login with valid credentials" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:105:9 › Authentication Flows › User Login Flow › should successfully login with valid credentials 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      107 |
+      108 |       // Fill login form
+    > 109 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      110 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      111 |       
+      112 |       // Submit login
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:109:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--619a3-ogin-with-valid-credentials-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should fail login with invalid credentials" classname="auth-flows.spec.ts" time="36.508">
+<failure message="auth-flows.spec.ts:129:9 should fail login with invalid credentials" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:129:9 › Authentication Flows › User Login Flow › should fail login with invalid credentials 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      130 |       await page.goto('/login')
+      131 |
+    > 132 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      133 |       await page.fill('[data-testid="password-input"]', 'wrongpassword')
+      134 |       
+      135 |       await page.click('[data-testid="login-button"]')
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:132:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--dab03-in-with-invalid-credentials-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts" classname="auth-flows.spec.ts" time="36.95">
+<failure message="auth-flows.spec.ts:148:9 should handle account lockout after multiple failed attempts" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:148:9 › Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      151 |       // Make multiple failed login attempts
+      152 |       for (let i = 0; i < 5; i++) {
+    > 153 |         await page.fill('[data-testid="email-input"]', testUser.email)
+          |                    ^
+      154 |         await page.fill('[data-testid="password-input"]', 'wrongpassword')
+      155 |         await page.click('[data-testid="login-button"]')
+      156 |         
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:153:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--7c878-er-multiple-failed-attempts-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should remember user when &quot;Remember Me&quot; is checked" classname="auth-flows.spec.ts" time="36.731">
+<failure message="auth-flows.spec.ts:166:9 should remember user when &quot;Remember Me&quot; is checked" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:166:9 › Authentication Flows › User Login Flow › should remember user when "Remember Me" is checked 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      167 |       await page.goto('/login')
+      168 |
+    > 169 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      170 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      171 |       await page.check('[data-testid="remember-me-checkbox"]')
+      172 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:169:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--63788-when-Remember-Me-is-checked-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should request password reset successfully" classname="auth-flows.spec.ts" time="36.96">
+<failure message="auth-flows.spec.ts:191:9 should request password reset successfully" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:191:9 › Authentication Flows › Password Reset Flow › should request password reset successfully 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="forgot-password-link"]')
+
+
+      193 |       
+      194 |       // Click forgot password link
+    > 195 |       await page.click('[data-testid="forgot-password-link"]')
+          |                  ^
+      196 |       await expect(page).toHaveURL('/forgot-password')
+      197 |       
+      198 |       // Enter email
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:195:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--cf29e-password-reset-successfully-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--cf29e-password-reset-successfully-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--cf29e-password-reset-successfully-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--cf29e-password-reset-successfully-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--cf29e-password-reset-successfully-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--cf29e-password-reset-successfully-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should show success message even for non-existent email" classname="auth-flows.spec.ts" time="36.483">
+<failure message="auth-flows.spec.ts:206:9 should show success message even for non-existent email" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:206:9 › Authentication Flows › Password Reset Flow › should show success message even for non-existent email 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      207 |       await page.goto('/forgot-password')
+      208 |       
+    > 209 |       await page.fill('[data-testid="email-input"]', 'nonexistent@example.com')
+          |                  ^
+      210 |       await page.click('[data-testid="reset-password-button"]')
+      211 |       
+      212 |       // Should still show success message for security
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:209:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--48391-even-for-non-existent-email-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--48391-even-for-non-existent-email-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--48391-even-for-non-existent-email-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--48391-even-for-non-existent-email-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--48391-even-for-non-existent-email-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--48391-even-for-non-existent-email-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should successfully logout user" classname="auth-flows.spec.ts" time="37.277">
+<failure message="auth-flows.spec.ts:218:9 should successfully logout user" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:218:9 › Authentication Flows › User Logout Flow › should successfully logout user 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      219 |       // First login
+      220 |       await page.goto('/login')
+    > 221 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      222 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      223 |       await page.click('[data-testid="login-button"]')
+      224 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:221:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--83b6e-ld-successfully-logout-user-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should handle logout from all devices" classname="auth-flows.spec.ts" time="37.045">
+<failure message="auth-flows.spec.ts:241:9 should handle logout from all devices" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:241:9 › Authentication Flows › User Logout Flow › should handle logout from all devices 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      242 |       // Login in first tab
+      243 |       await page.goto('/login')
+    > 244 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      245 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      246 |       await page.click('[data-testid="login-button"]')
+      247 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:244:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--947cf-dle-logout-from-all-devices-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should maintain session across page reloads" classname="auth-flows.spec.ts" time="35.329">
+<failure message="auth-flows.spec.ts:273:9 should maintain session across page reloads" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:273:9 › Authentication Flows › Authentication State Persistence › should maintain session across page reloads 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      274 |       // Login
+      275 |       await page.goto('/login')
+    > 276 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      277 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      278 |       await page.click('[data-testid="login-button"]')
+      279 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:276:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--c1b15-session-across-page-reloads-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login" classname="auth-flows.spec.ts" time="12.64">
+<failure message="auth-flows.spec.ts:290:9 should redirect unauthenticated users to login" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:290:9 › Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login 
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected string: "http://127.0.0.1:3000/login"
+    Received string: "http://127.0.0.1:3000/dashboard"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+        8 × unexpected value "http://127.0.0.1:3000/dashboard"
+
+
+      293 |       
+      294 |       // Should redirect to login
+    > 295 |       await expect(page).toHaveURL('/login')
+          |                          ^
+      296 |       
+      297 |       // Should show message about needing to login
+      298 |       await expect(page.locator('[data-testid="login-required-message"]')).toContainText('Please log in to continue')
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:295:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--103f5-uthenticated-users-to-login-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully" classname="auth-flows.spec.ts" time="36.106">
+<failure message="auth-flows.spec.ts:301:9 should handle expired tokens gracefully" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:301:9 › Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      302 |       // Login first
+      303 |       await page.goto('/login')
+    > 304 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      305 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      306 |       await page.click('[data-testid="login-button"]')
+      307 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:304:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--074e9-e-expired-tokens-gracefully-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should prevent XSS attacks in input fields" classname="auth-flows.spec.ts" time="35.854">
+<failure message="auth-flows.spec.ts:325:9 should prevent XSS attacks in input fields" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:325:9 › Authentication Flows › Security Features › should prevent XSS attacks in input fields 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="business-idea-input"]')
+
+
+      328 |       const maliciousScript = '<script>alert("XSS")</script>'
+      329 |       
+    > 330 |       await page.fill('[data-testid="business-idea-input"]', maliciousScript)
+          |                  ^
+      331 |       await page.fill('[data-testid="full-name-input"]', maliciousScript)
+      332 |       
+      333 |       // Submit form (assuming other required fields are filled)
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:330:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--ec14d-XSS-attacks-in-input-fields-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should validate CSRF protection" classname="auth-flows.spec.ts" time="35.948">
+<failure message="auth-flows.spec.ts:348:9 should validate CSRF protection" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:348:9 › Authentication Flows › Security Features › should validate CSRF protection 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="email-input"]')
+
+
+      349 |       // Login first
+      350 |       await page.goto('/login')
+    > 351 |       await page.fill('[data-testid="email-input"]', testUser.email)
+          |                  ^
+      352 |       await page.fill('[data-testid="password-input"]', testUser.password)
+      353 |       await page.click('[data-testid="login-button"]')
+      354 |       
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:351:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--93435-ld-validate-CSRF-protection-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should enforce secure password requirements" classname="auth-flows.spec.ts" time="36.023">
+<failure message="auth-flows.spec.ts:364:9 should enforce secure password requirements" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:364:9 › Authentication Flows › Security Features › should enforce secure password requirements 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="password-input"]')
+
+
+      374 |
+      375 |       for (const weakPassword of weakPasswords) {
+    > 376 |         await page.fill('[data-testid="password-input"]', weakPassword)
+          |                    ^
+      377 |         await page.blur('[data-testid="password-input"]') // Trigger validation
+      378 |         
+      379 |         await expect(page.locator('[data-testid="password-strength-indicator"]')).toContainText('Weak')
+        at C:\ProLaunch.MVP.V2\frontend\tests\e2e\auth-flows.spec.ts:376:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\video.webm]]
+
+[[ATTACHMENT|auth-flows-Authentication--1e4a6-ecure-password-requirements-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should be keyboard navigable" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:391:9 should be keyboard navigable" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:391:9 › Authentication Flows › Accessibility › should be keyboard navigable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should have proper ARIA labels" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:408:9 should have proper ARIA labels" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:408:9 › Authentication Flows › Accessibility › should have proper ARIA labels 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should announce errors to screen readers" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:417:9 should announce errors to screen readers" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:417:9 › Authentication Flows › Accessibility › should announce errors to screen readers 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should load login page quickly" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:430:9 should load login page quickly" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:430:9 › Authentication Flows › Performance › should load login page quickly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should handle form submission efficiently" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:440:9 should handle form submission efficiently" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:440:9 › Authentication Flows › Performance › should handle form submission efficiently 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should work correctly on mobile devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:462:7 should work correctly on mobile devices" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:462:7 › Mobile Authentication › should work correctly on mobile devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should handle touch interactions" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:480:7 should handle touch interactions" type="FAILURE">
+<![CDATA[  [chromium] › auth-flows.spec.ts:480:7 › Mobile Authentication › should handle touch interactions ─
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="chromium" tests="3" failures="3" skipped="0" time="0" errors="0">
+<testcase name="ProLaunch MVP - Basic functionality › should load the homepage" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:4:7 should load the homepage" type="FAILURE">
+<![CDATA[  [chromium] › example.spec.ts:4:7 › ProLaunch MVP - Basic functionality › should load the homepage 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should have proper meta tags" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:17:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [chromium] › example.spec.ts:17:7 › ProLaunch MVP - Basic functionality › should have proper meta tags 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should handle navigation" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:25:7 should handle navigation" type="FAILURE">
+<![CDATA[  [chromium] › example.spec.ts:25:7 › ProLaunch MVP - Basic functionality › should handle navigation 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth-flows.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="firefox" tests="25" failures="25" skipped="0" time="0" errors="0">
+<testcase name="Authentication Flows › User Registration Flow › should successfully register a new user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:38:9 should successfully register a new user" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:38:9 › Authentication Flows › User Registration Flow › should successfully register a new user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate required fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:66:9 should validate required fields" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:66:9 › Authentication Flows › User Registration Flow › should validate required fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate password strength" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:78:9 should validate password strength" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:78:9 › Authentication Flows › User Registration Flow › should validate password strength 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should handle duplicate email registration" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:90:9 should handle duplicate email registration" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:90:9 › Authentication Flows › User Registration Flow › should handle duplicate email registration 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should successfully login with valid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:105:9 should successfully login with valid credentials" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:105:9 › Authentication Flows › User Login Flow › should successfully login with valid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should fail login with invalid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:129:9 should fail login with invalid credentials" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:129:9 › Authentication Flows › User Login Flow › should fail login with invalid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:148:9 should handle account lockout after multiple failed attempts" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:148:9 › Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should remember user when &quot;Remember Me&quot; is checked" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:166:9 should remember user when &quot;Remember Me&quot; is checked" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:166:9 › Authentication Flows › User Login Flow › should remember user when "Remember Me" is checked 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should request password reset successfully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:191:9 should request password reset successfully" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:191:9 › Authentication Flows › Password Reset Flow › should request password reset successfully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should show success message even for non-existent email" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:206:9 should show success message even for non-existent email" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:206:9 › Authentication Flows › Password Reset Flow › should show success message even for non-existent email 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should successfully logout user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:218:9 should successfully logout user" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:218:9 › Authentication Flows › User Logout Flow › should successfully logout user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should handle logout from all devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:241:9 should handle logout from all devices" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:241:9 › Authentication Flows › User Logout Flow › should handle logout from all devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should maintain session across page reloads" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:273:9 should maintain session across page reloads" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:273:9 › Authentication Flows › Authentication State Persistence › should maintain session across page reloads 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:290:9 should redirect unauthenticated users to login" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:290:9 › Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:301:9 should handle expired tokens gracefully" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:301:9 › Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should prevent XSS attacks in input fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:325:9 should prevent XSS attacks in input fields" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:325:9 › Authentication Flows › Security Features › should prevent XSS attacks in input fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should validate CSRF protection" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:348:9 should validate CSRF protection" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:348:9 › Authentication Flows › Security Features › should validate CSRF protection 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should enforce secure password requirements" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:364:9 should enforce secure password requirements" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:364:9 › Authentication Flows › Security Features › should enforce secure password requirements 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should be keyboard navigable" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:391:9 should be keyboard navigable" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:391:9 › Authentication Flows › Accessibility › should be keyboard navigable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should have proper ARIA labels" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:408:9 should have proper ARIA labels" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:408:9 › Authentication Flows › Accessibility › should have proper ARIA labels 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should announce errors to screen readers" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:417:9 should announce errors to screen readers" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:417:9 › Authentication Flows › Accessibility › should announce errors to screen readers 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should load login page quickly" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:430:9 should load login page quickly" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:430:9 › Authentication Flows › Performance › should load login page quickly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should handle form submission efficiently" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:440:9 should handle form submission efficiently" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:440:9 › Authentication Flows › Performance › should handle form submission efficiently 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should work correctly on mobile devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:462:7 should work correctly on mobile devices" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:462:7 › Mobile Authentication › should work correctly on mobile devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should handle touch interactions" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:480:7 should handle touch interactions" type="FAILURE">
+<![CDATA[  [firefox] › auth-flows.spec.ts:480:7 › Mobile Authentication › should handle touch interactions ──
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="firefox" tests="3" failures="3" skipped="0" time="0" errors="0">
+<testcase name="ProLaunch MVP - Basic functionality › should load the homepage" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:4:7 should load the homepage" type="FAILURE">
+<![CDATA[  [firefox] › example.spec.ts:4:7 › ProLaunch MVP - Basic functionality › should load the homepage ─
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should have proper meta tags" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:17:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [firefox] › example.spec.ts:17:7 › ProLaunch MVP - Basic functionality › should have proper meta tags 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should handle navigation" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:25:7 should handle navigation" type="FAILURE">
+<![CDATA[  [firefox] › example.spec.ts:25:7 › ProLaunch MVP - Basic functionality › should handle navigation 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth-flows.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="webkit" tests="25" failures="25" skipped="0" time="0" errors="0">
+<testcase name="Authentication Flows › User Registration Flow › should successfully register a new user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:38:9 should successfully register a new user" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:38:9 › Authentication Flows › User Registration Flow › should successfully register a new user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate required fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:66:9 should validate required fields" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:66:9 › Authentication Flows › User Registration Flow › should validate required fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate password strength" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:78:9 should validate password strength" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:78:9 › Authentication Flows › User Registration Flow › should validate password strength 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should handle duplicate email registration" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:90:9 should handle duplicate email registration" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:90:9 › Authentication Flows › User Registration Flow › should handle duplicate email registration 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should successfully login with valid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:105:9 should successfully login with valid credentials" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:105:9 › Authentication Flows › User Login Flow › should successfully login with valid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should fail login with invalid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:129:9 should fail login with invalid credentials" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:129:9 › Authentication Flows › User Login Flow › should fail login with invalid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:148:9 should handle account lockout after multiple failed attempts" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:148:9 › Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should remember user when &quot;Remember Me&quot; is checked" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:166:9 should remember user when &quot;Remember Me&quot; is checked" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:166:9 › Authentication Flows › User Login Flow › should remember user when "Remember Me" is checked 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should request password reset successfully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:191:9 should request password reset successfully" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:191:9 › Authentication Flows › Password Reset Flow › should request password reset successfully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should show success message even for non-existent email" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:206:9 should show success message even for non-existent email" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:206:9 › Authentication Flows › Password Reset Flow › should show success message even for non-existent email 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should successfully logout user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:218:9 should successfully logout user" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:218:9 › Authentication Flows › User Logout Flow › should successfully logout user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should handle logout from all devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:241:9 should handle logout from all devices" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:241:9 › Authentication Flows › User Logout Flow › should handle logout from all devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should maintain session across page reloads" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:273:9 should maintain session across page reloads" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:273:9 › Authentication Flows › Authentication State Persistence › should maintain session across page reloads 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:290:9 should redirect unauthenticated users to login" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:290:9 › Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:301:9 should handle expired tokens gracefully" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:301:9 › Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should prevent XSS attacks in input fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:325:9 should prevent XSS attacks in input fields" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:325:9 › Authentication Flows › Security Features › should prevent XSS attacks in input fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should validate CSRF protection" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:348:9 should validate CSRF protection" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:348:9 › Authentication Flows › Security Features › should validate CSRF protection 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should enforce secure password requirements" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:364:9 should enforce secure password requirements" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:364:9 › Authentication Flows › Security Features › should enforce secure password requirements 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should be keyboard navigable" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:391:9 should be keyboard navigable" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:391:9 › Authentication Flows › Accessibility › should be keyboard navigable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should have proper ARIA labels" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:408:9 should have proper ARIA labels" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:408:9 › Authentication Flows › Accessibility › should have proper ARIA labels 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should announce errors to screen readers" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:417:9 should announce errors to screen readers" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:417:9 › Authentication Flows › Accessibility › should announce errors to screen readers 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should load login page quickly" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:430:9 should load login page quickly" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:430:9 › Authentication Flows › Performance › should load login page quickly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should handle form submission efficiently" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:440:9 should handle form submission efficiently" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:440:9 › Authentication Flows › Performance › should handle form submission efficiently 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should work correctly on mobile devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:462:7 should work correctly on mobile devices" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:462:7 › Mobile Authentication › should work correctly on mobile devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should handle touch interactions" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:480:7 should handle touch interactions" type="FAILURE">
+<![CDATA[  [webkit] › auth-flows.spec.ts:480:7 › Mobile Authentication › should handle touch interactions ───
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="webkit" tests="3" failures="3" skipped="0" time="0" errors="0">
+<testcase name="ProLaunch MVP - Basic functionality › should load the homepage" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:4:7 should load the homepage" type="FAILURE">
+<![CDATA[  [webkit] › example.spec.ts:4:7 › ProLaunch MVP - Basic functionality › should load the homepage ──
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should have proper meta tags" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:17:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [webkit] › example.spec.ts:17:7 › ProLaunch MVP - Basic functionality › should have proper meta tags 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should handle navigation" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:25:7 should handle navigation" type="FAILURE">
+<![CDATA[  [webkit] › example.spec.ts:25:7 › ProLaunch MVP - Basic functionality › should handle navigation ─
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth-flows.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="Mobile Chrome" tests="25" failures="25" skipped="0" time="0" errors="0">
+<testcase name="Authentication Flows › User Registration Flow › should successfully register a new user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:38:9 should successfully register a new user" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:38:9 › Authentication Flows › User Registration Flow › should successfully register a new user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate required fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:66:9 should validate required fields" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:66:9 › Authentication Flows › User Registration Flow › should validate required fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate password strength" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:78:9 should validate password strength" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:78:9 › Authentication Flows › User Registration Flow › should validate password strength 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should handle duplicate email registration" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:90:9 should handle duplicate email registration" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:90:9 › Authentication Flows › User Registration Flow › should handle duplicate email registration 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should successfully login with valid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:105:9 should successfully login with valid credentials" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:105:9 › Authentication Flows › User Login Flow › should successfully login with valid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should fail login with invalid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:129:9 should fail login with invalid credentials" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:129:9 › Authentication Flows › User Login Flow › should fail login with invalid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:148:9 should handle account lockout after multiple failed attempts" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:148:9 › Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should remember user when &quot;Remember Me&quot; is checked" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:166:9 should remember user when &quot;Remember Me&quot; is checked" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:166:9 › Authentication Flows › User Login Flow › should remember user when "Remember Me" is checked 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should request password reset successfully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:191:9 should request password reset successfully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:191:9 › Authentication Flows › Password Reset Flow › should request password reset successfully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should show success message even for non-existent email" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:206:9 should show success message even for non-existent email" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:206:9 › Authentication Flows › Password Reset Flow › should show success message even for non-existent email 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should successfully logout user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:218:9 should successfully logout user" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:218:9 › Authentication Flows › User Logout Flow › should successfully logout user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should handle logout from all devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:241:9 should handle logout from all devices" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:241:9 › Authentication Flows › User Logout Flow › should handle logout from all devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should maintain session across page reloads" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:273:9 should maintain session across page reloads" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:273:9 › Authentication Flows › Authentication State Persistence › should maintain session across page reloads 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:290:9 should redirect unauthenticated users to login" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:290:9 › Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:301:9 should handle expired tokens gracefully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:301:9 › Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should prevent XSS attacks in input fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:325:9 should prevent XSS attacks in input fields" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:325:9 › Authentication Flows › Security Features › should prevent XSS attacks in input fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should validate CSRF protection" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:348:9 should validate CSRF protection" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:348:9 › Authentication Flows › Security Features › should validate CSRF protection 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should enforce secure password requirements" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:364:9 should enforce secure password requirements" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:364:9 › Authentication Flows › Security Features › should enforce secure password requirements 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should be keyboard navigable" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:391:9 should be keyboard navigable" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:391:9 › Authentication Flows › Accessibility › should be keyboard navigable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should have proper ARIA labels" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:408:9 should have proper ARIA labels" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:408:9 › Authentication Flows › Accessibility › should have proper ARIA labels 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should announce errors to screen readers" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:417:9 should announce errors to screen readers" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:417:9 › Authentication Flows › Accessibility › should announce errors to screen readers 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should load login page quickly" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:430:9 should load login page quickly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:430:9 › Authentication Flows › Performance › should load login page quickly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should handle form submission efficiently" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:440:9 should handle form submission efficiently" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:440:9 › Authentication Flows › Performance › should handle form submission efficiently 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should work correctly on mobile devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:462:7 should work correctly on mobile devices" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:462:7 › Mobile Authentication › should work correctly on mobile devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should handle touch interactions" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:480:7 should handle touch interactions" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth-flows.spec.ts:480:7 › Mobile Authentication › should handle touch interactions 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="Mobile Chrome" tests="3" failures="3" skipped="0" time="0" errors="0">
+<testcase name="ProLaunch MVP - Basic functionality › should load the homepage" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:4:7 should load the homepage" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › example.spec.ts:4:7 › ProLaunch MVP - Basic functionality › should load the homepage 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should have proper meta tags" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:17:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › example.spec.ts:17:7 › ProLaunch MVP - Basic functionality › should have proper meta tags 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should handle navigation" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:25:7 should handle navigation" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › example.spec.ts:25:7 › ProLaunch MVP - Basic functionality › should handle navigation 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth-flows.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="Mobile Safari" tests="25" failures="25" skipped="0" time="0" errors="0">
+<testcase name="Authentication Flows › User Registration Flow › should successfully register a new user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:38:9 should successfully register a new user" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:38:9 › Authentication Flows › User Registration Flow › should successfully register a new user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate required fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:66:9 should validate required fields" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:66:9 › Authentication Flows › User Registration Flow › should validate required fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should validate password strength" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:78:9 should validate password strength" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:78:9 › Authentication Flows › User Registration Flow › should validate password strength 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Registration Flow › should handle duplicate email registration" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:90:9 should handle duplicate email registration" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:90:9 › Authentication Flows › User Registration Flow › should handle duplicate email registration 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should successfully login with valid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:105:9 should successfully login with valid credentials" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:105:9 › Authentication Flows › User Login Flow › should successfully login with valid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should fail login with invalid credentials" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:129:9 should fail login with invalid credentials" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:129:9 › Authentication Flows › User Login Flow › should fail login with invalid credentials 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:148:9 should handle account lockout after multiple failed attempts" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:148:9 › Authentication Flows › User Login Flow › should handle account lockout after multiple failed attempts 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Login Flow › should remember user when &quot;Remember Me&quot; is checked" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:166:9 should remember user when &quot;Remember Me&quot; is checked" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:166:9 › Authentication Flows › User Login Flow › should remember user when "Remember Me" is checked 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should request password reset successfully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:191:9 should request password reset successfully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:191:9 › Authentication Flows › Password Reset Flow › should request password reset successfully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Password Reset Flow › should show success message even for non-existent email" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:206:9 should show success message even for non-existent email" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:206:9 › Authentication Flows › Password Reset Flow › should show success message even for non-existent email 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should successfully logout user" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:218:9 should successfully logout user" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:218:9 › Authentication Flows › User Logout Flow › should successfully logout user 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › User Logout Flow › should handle logout from all devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:241:9 should handle logout from all devices" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:241:9 › Authentication Flows › User Logout Flow › should handle logout from all devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should maintain session across page reloads" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:273:9 should maintain session across page reloads" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:273:9 › Authentication Flows › Authentication State Persistence › should maintain session across page reloads 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:290:9 should redirect unauthenticated users to login" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:290:9 › Authentication Flows › Authentication State Persistence › should redirect unauthenticated users to login 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:301:9 should handle expired tokens gracefully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:301:9 › Authentication Flows › Authentication State Persistence › should handle expired tokens gracefully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should prevent XSS attacks in input fields" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:325:9 should prevent XSS attacks in input fields" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:325:9 › Authentication Flows › Security Features › should prevent XSS attacks in input fields 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should validate CSRF protection" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:348:9 should validate CSRF protection" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:348:9 › Authentication Flows › Security Features › should validate CSRF protection 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Security Features › should enforce secure password requirements" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:364:9 should enforce secure password requirements" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:364:9 › Authentication Flows › Security Features › should enforce secure password requirements 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should be keyboard navigable" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:391:9 should be keyboard navigable" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:391:9 › Authentication Flows › Accessibility › should be keyboard navigable 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should have proper ARIA labels" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:408:9 should have proper ARIA labels" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:408:9 › Authentication Flows › Accessibility › should have proper ARIA labels 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Accessibility › should announce errors to screen readers" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:417:9 should announce errors to screen readers" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:417:9 › Authentication Flows › Accessibility › should announce errors to screen readers 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should load login page quickly" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:430:9 should load login page quickly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:430:9 › Authentication Flows › Performance › should load login page quickly 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication Flows › Performance › should handle form submission efficiently" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:440:9 should handle form submission efficiently" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:440:9 › Authentication Flows › Performance › should handle form submission efficiently 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should work correctly on mobile devices" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:462:7 should work correctly on mobile devices" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:462:7 › Mobile Authentication › should work correctly on mobile devices 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Mobile Authentication › should handle touch interactions" classname="auth-flows.spec.ts" time="0">
+<failure message="auth-flows.spec.ts:480:7 should handle touch interactions" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth-flows.spec.ts:480:7 › Mobile Authentication › should handle touch interactions 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-09-06T16:53:07.421Z" hostname="Mobile Safari" tests="3" failures="3" skipped="0" time="0" errors="0">
+<testcase name="ProLaunch MVP - Basic functionality › should load the homepage" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:4:7 should load the homepage" type="FAILURE">
+<![CDATA[  [Mobile Safari] › example.spec.ts:4:7 › ProLaunch MVP - Basic functionality › should load the homepage 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should have proper meta tags" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:17:7 should have proper meta tags" type="FAILURE">
+<![CDATA[  [Mobile Safari] › example.spec.ts:17:7 › ProLaunch MVP - Basic functionality › should have proper meta tags 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="ProLaunch MVP - Basic functionality › should handle navigation" classname="example.spec.ts" time="0">
+<failure message="example.spec.ts:25:7 should handle navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › example.spec.ts:25:7 › ProLaunch MVP - Basic functionality › should handle navigation 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

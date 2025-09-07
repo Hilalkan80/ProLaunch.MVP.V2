@@ -1,0 +1,5 @@
+2025-09-07 17:38:31,952 - INFO - Committing changes...
+2025-09-07 17:38:31,969 - ERROR - Git command failed: ['git', 'add', '.']
+2025-09-07 17:38:31,969 - ERROR - Error output: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-07 17:38:31,969 - ERROR - Failed to commit changes: Command '['git', 'add', '.']' returned non-zero exit status 128.

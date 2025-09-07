@@ -1,0 +1,101 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+docs/
+README.md
+LICENSE
+
+# Development
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm/
+.yarn/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Testing
+coverage/
+.coverage
+.pytest_cache/
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.cache/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.docker
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker
+docker-compose.override.yml
+docker-compose.local.yml
+Dockerfile.dev
+
+# Backup files
+*.backup
+*.bak
+backups/
+
+# Database
+*.sql
+*.sqlite
+*.db
+db/backups/
+
+# Credentials
+credentials.txt
+secrets/
+*.key
+*.pem
+*.crt

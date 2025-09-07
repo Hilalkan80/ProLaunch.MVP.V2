@@ -1,0 +1,70 @@
+cluster.name: prolaunch-cluster
+node.name: ${HOSTNAME}
+
+# Paths
+path.data: /usr/share/elasticsearch/data
+path.logs: /usr/share/elasticsearch/logs
+
+# Network
+network.host: 0.0.0.0
+http.port: 9200
+
+# Discovery
+discovery.type: single-node
+
+# Security
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.security.http.ssl.enabled: false
+
+# Memory
+bootstrap.memory_lock: true
+
+# Node
+node.master: true
+node.data: true
+node.ingest: true
+
+# Cross-origin
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: Authorization, X-Requested-With, Content-Type, Content-Length
+
+# Monitoring
+xpack.monitoring.collection.enabled: true
+
+# Search
+search.max_buckets: 10000
+search.default_search_timeout: 30s
+
+# Indices
+action.auto_create_index: true
+action.destructive_requires_name: true
+
+# Shards
+cluster.routing.allocation.disk.threshold_enabled: true
+cluster.routing.allocation.disk.watermark.low: 85%
+cluster.routing.allocation.disk.watermark.high: 90%
+cluster.routing.allocation.disk.watermark.flood_stage: 95%
+
+# Recovery
+indices.recovery.max_bytes_per_sec: 40mb
+
+# Field limits
+mapping.total_fields.limit: 2000
+mapping.depth.limit: 20
+mapping.nested_fields.limit: 50
+
+# Threadpools
+thread_pool.write.size: 4
+thread_pool.write.queue_size: 1000
+
+# Cache
+indices.queries.cache.size: 10%
+indices.memory.index_buffer_size: 10%
+
+# Circuit breaker
+indices.breaker.total.limit: 70%
+indices.breaker.fielddata.limit: 60%
+indices.breaker.request.limit: 60%

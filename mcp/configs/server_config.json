@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 8080,
+  "workers": 4,
+  "timeout": 30,
+  "max_requests": 1000
+}

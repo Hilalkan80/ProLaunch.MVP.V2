@@ -1,0 +1,21 @@
+server.name: prolaunch-kibana
+server.host: "0.0.0.0"
+server.port: 5601
+
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+elasticsearch.username: kibana_system
+elasticsearch.password: ${KIBANA_PASSWORD}
+
+monitoring.ui.container.elasticsearch.enabled: true
+monitoring.ui.container.logstash.enabled: true
+
+xpack.security.enabled: true
+xpack.security.encryptionKey: ${KIBANA_ENCRYPTION_KEY:somethinglongerthanthirtytwochars}
+xpack.encryptedSavedObjects.encryptionKey: ${KIBANA_ENCRYPTION_KEY:somethinglongerthanthirtytwochars}
+
+xpack.reporting.enabled: true
+xpack.reporting.capture.browser.chromium.disableSandbox: true
+
+telemetry.enabled: false
+
+i18n.locale: "en"

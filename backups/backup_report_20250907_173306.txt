@@ -1,0 +1,62 @@
+================================================================================
+PROLAUNCH MVP BACKUP REPORT
+Generated: 2025-09-07T17:33:07.069737
+Version: v0.17.0
+================================================================================
+
+GIT INFORMATION:
+----------------------------------------
+
+ARCHIVE INFORMATION:
+----------------------------------------
+  path: C:\ProLaunch.MVP.V2\backups\prolaunch_backup_20250907_173306.tar.gz
+  size: 124,396 bytes
+  type: tar.gz
+  checksum: b32613eb25510a3d73d7d0fbf4f4787bc6ca094e0a7eb9b8bd4dc44c97d1bf74
+
+VERIFICATION RESULTS:
+----------------------------------------
+  total_files: 56
+  verified: True
+
+FILES BACKED UP:
+----------------------------------------
+  - backend\src\ai\__init__.py
+  - backend\src\ai\__pycache__\__init__.cpython-313.pyc
+  - backend\src\ai\__pycache__\llama_config.cpython-313.pyc
+  - backend\src\ai\__pycache__\llama_service.cpython-313.pyc
+  - backend\src\ai\context\layers.py
+  - backend\src\ai\context\manager.py
+  - backend\src\ai\context\mcp_adapters.py
+  - backend\src\ai\context\token_optimizer.py
+  - backend\src\ai\embedding_service.py
+  - backend\src\ai\llama_config.py
+  - backend\src\ai\llama_service.py
+  - backend\src\ai\prompt_loader.py
+  - prolaunch_prompts\02_citation_system.md
+  - prolaunch_prompts\chat\10_onboarding_system.md
+  - prolaunch_prompts\chat\11_followup_refinement.md
+  - prolaunch_prompts\milestones\M1_Unit_Economics_Generator.md
+  - prolaunch_prompts\milestones\M2_Deep_Research.md
+  - prolaunch_prompts\milestones\M3_Supplier_Shortlist.md
+  - prolaunch_prompts\milestones\M4_Financial_Model_Generator_Prompt.md
+  - prolaunch_prompts\milestones\m0_feasibility_snapshot.md
+  ... and 27 more files
+
+SAMPLE CHECKSUMS (first 5):
+----------------------------------------
+  backend\src\ai\embedding_service.py:
+    cd8885a1d11b92413a3e4406079769bd0b8e50fe494b01e63efc77addd292de1
+  backend\src\ai\llama_config.py:
+    467376ad73bc2312923e4f76953a30b7276baea68ddcb91705248881d21524a7
+  backend\src\ai\llama_service.py:
+    3387b47b546784375a0c0a0a91d8f3661d50aa9e629b4ab9b3f296e657050866
+  backend\src\ai\prompt_loader.py:
+    8a4f12e4498581cae95f7454a24a61cdcf95b44e7122a918fef8fb7a19b9980d
+  backend\src\ai\__init__.py:
+    f7967169d9bbdc87962714421cffa82d9887039c2758488f42d0a299f1f0a2ce
+
+================================================================================
+Backup completed successfully: True
+Total files backed up: 47
+================================================================================

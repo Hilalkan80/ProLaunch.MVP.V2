@@ -1,0 +1,50 @@
+{
+  "default_version": "v0.17.0",
+  "default_format": "tar",
+  "ai_directories": [
+    "backend/src/ai",
+    "prolaunch_prompts",
+    "prolaunch_prompts/milestones",
+    "backend/src/api/routes/prompts.py",
+    "backend/src/api/v1/milestones.py",
+    "backend/src/models/milestone.py",
+    "backend/src/services/milestone_service.py",
+    "backend/src/services/milestone_cache.py",
+    "backend/src/services/milestone_cache_enhanced.py",
+    "backend/src/infrastructure/persistence/milestone_persistence.py",
+    "backend/tests/integration/test_milestone_cache_enhanced.py",
+    "backend/tests/integration/test_milestone_e2e_workflows.py",
+    "backend/tests/integration/test_milestone_persistence.py"
+  ],
+  "critical_files": [
+    ".env.example",
+    "docker-compose.yml",
+    "docker-compose.prod.yml",
+    "docker-compose.test.yml",
+    "Makefile",
+    "README.md",
+    "CLAUDE.md",
+    "SECURITY.md",
+    "TESTING.md"
+  ],
+  "additional_directories": [
+    "project-documentation",
+    "design-system",
+    ".github/workflows"
+  ],
+  "exclude_patterns": [
+    "*.pyc",
+    "__pycache__",
+    "*.log",
+    ".git",
+    "node_modules",
+    "venv",
+    ".env",
+    "*.tmp",
+    "*.bak"
+  ],
+  "backup_retention_days": 30,
+  "compression_level": 9,
+  "verify_checksums": true,
+  "create_redundant_backup": false
+}

@@ -1,0 +1,19 @@
+2025-09-07 18:04:10,050 - INFO - Exporting AI system...
+2025-09-07 18:04:10,061 - INFO - AI system export completed
+2025-09-07 18:04:10,061 - INFO - Exporting database...
+2025-09-07 18:04:14,166 - ERROR - Database export error: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-09-07 18:04:14,173 - INFO - Database export completed
+2025-09-07 18:04:14,173 - INFO - Exporting MCP configuration...
+2025-09-07 18:04:14,181 - INFO - MCP configuration export completed
+2025-09-07 18:04:14,181 - INFO - Creating critical files checklist...
+2025-09-07 18:04:14,195 - ERROR - Error copying C:\ProLaunch.MVP.V2\.env: 'files'
+2025-09-07 18:04:14,208 - ERROR - Error copying C:\ProLaunch.MVP.V2\.env.production: 'files'
+2025-09-07 18:04:14,221 - ERROR - Error copying C:\ProLaunch.MVP.V2\docker-compose.yml: 'files'
+2025-09-07 18:04:14,236 - ERROR - Error copying C:\ProLaunch.MVP.V2\CLAUDE.md: 'files'
+2025-09-07 18:04:14,238 - INFO - Critical files checklist created
+2025-09-07 18:04:14,238 - INFO - Generating verification report...
+2025-09-07 18:04:14,241 - ERROR - Export failed: 'charmap' codec can't encode character '\u2705' in position 86: character maps to <undefined>

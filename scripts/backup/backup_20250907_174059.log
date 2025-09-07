@@ -1,0 +1,14 @@
+2025-09-07 17:40:59,550 - INFO - Committing changes...
+2025-09-07 17:40:59,580 - ERROR - Git command failed: ['git', 'add', '.']
+2025-09-07 17:40:59,580 - ERROR - Error output: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-07 17:40:59,595 - INFO - Creating git tag: v0.17.0
+2025-09-07 17:40:59,626 - ERROR - Git command failed: ['git', 'tag', '-a', 'v0.17.0', '-m', 'Step 17 Development Milestone\n\nMajor features completed:\n- Context Management System\n- Citation Tracking System\n- Milestone Infrastructure\n- M0 Processing Engine (initial)']
+2025-09-07 17:40:59,627 - ERROR - Error output: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-07 17:40:59,643 - INFO - Pushing to remote...
+2025-09-07 17:40:59,680 - ERROR - Git command failed: ['git', 'push', 'origin', 'main']
+2025-09-07 17:40:59,680 - ERROR - Error output: fatal: not a git repository (or any of the parent directories): .git
+
+2025-09-07 17:40:59,680 - INFO - Creating backup archive...
+2025-09-07 17:40:59,690 - ERROR - Failed to create backup archive: [WinError 2] The system cannot find the file specified: 'C:\\ProLaunch.MVP.V2\\backups\\backup_20250907_174059.tar.gz'

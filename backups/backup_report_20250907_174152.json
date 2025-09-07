@@ -1,0 +1,27 @@
+{
+  "timestamp": "20250907_174152",
+  "files": {
+    "ai\\test.txt": {
+      "size": 23,
+      "modified": "2025-09-07T17:41:03.117566"
+    },
+    "milestones\\test.txt": {
+      "size": 30,
+      "modified": "2025-09-07T17:41:06.268440"
+    },
+    "prompts\\test.txt": {
+      "size": 27,
+      "modified": "2025-09-07T17:41:09.133676"
+    }
+  },
+  "checksums": {
+    "ai\\test.txt": "23573a3760e76d8e47708a2207f5bf07ff18b70e0acf23136dac4d38b3730763",
+    "milestones\\test.txt": "5ae09ff67b447da70464e59ec086d42395021afcd5f23ac82a1c1b9660e5d139",
+    "prompts\\test.txt": "2cc18e8a7b07eaf4f41c0acc5acce73555c19a28e29e33d65f847d6acb7f3800"
+  },
+  "archive": {
+    "name": "backup_20250907_174152.zip",
+    "size": 692,
+    "checksum": "c34d81dd414a1f714c087d2b59ed552861aea768164523495daa95d3ff61b577"
+  }
+}

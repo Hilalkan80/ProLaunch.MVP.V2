@@ -1,0 +1,41 @@
+{
+  "manual_items": [
+    ".env.local",
+    "docker-compose.override.yml",
+    "Dockerfile",
+    "package.json",
+    "requirements.txt",
+    "security/certificates/",
+    "security/keys/"
+  ],
+  "automated_items": [
+    ".env",
+    ".env.production",
+    "docker-compose.yml",
+    "CLAUDE.md"
+  ],
+  "security_items": [],
+  "files": {
+    ".env": {
+      "size": 2357,
+      "checksum": "cfece4a206c5dd2f72ed2693a8dc78e39e75edb4a848b4ab116ba582f82ed0f0",
+      "modified": "2025-09-05T18:28:04.912133"
+    },
+    ".env.production": {
+      "size": 721,
+      "checksum": "788358c2dd478d58d22809b1549f8de4e9797d6a488530b73a2c6ead619d875d",
+      "modified": "2025-09-04T13:09:16.298026"
+    },
+    "docker-compose.yml": {
+      "size": 2447,
+      "checksum": "f6d003fa6b956d06d83c54c0953eefd31939a0c46bd6dd87a288e469af731cf1",
+      "modified": "2025-09-05T18:33:47.851727"
+    },
+    "CLAUDE.md": {
+      "size": 1354,
+      "checksum": "aa94721c7e3205fcd4f56084f38648f1e30dff7c9c3b5e4ebfea7747fb57548b",
+      "modified": "2025-09-05T14:47:53.413908"
+    }
+  },
+  "directories": {}
+}

@@ -1,0 +1,37 @@
+{
+  "timestamp": "20250907_180410",
+  "components": {
+    "ai_system": {
+      "status": "success",
+      "files": 0,
+      "directories": 7,
+      "total_size": 118
+    },
+    "database": {
+      "status": "success",
+      "files": 0,
+      "directories": 0,
+      "total_size": 0
+    },
+    "mcp_integration": {
+      "status": "success",
+      "files": 0,
+      "directories": 4,
+      "total_size": 98
+    },
+    "critical_files": {
+      "status": "success",
+      "files": 0,
+      "directories": 0,
+      "total_size": 0
+    }
+  },
+  "statistics": {
+    "total_files": 0,
+    "total_size": 216,
+    "automated_items": 4,
+    "manual_items": 7,
+    "warnings": 0,
+    "errors": 5
+  }
+}

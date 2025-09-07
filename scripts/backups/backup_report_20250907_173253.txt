@@ -1,0 +1,31 @@
+================================================================================
+PROLAUNCH MVP BACKUP REPORT
+Generated: 2025-09-07T17:32:53.213019
+Version: v0.17.0
+================================================================================
+
+GIT INFORMATION:
+----------------------------------------
+
+ARCHIVE INFORMATION:
+----------------------------------------
+  path: C:\ProLaunch.MVP.V2\scripts\backups\prolaunch_backup_20250907_173253.tar.gz
+  size: 82 bytes
+  type: tar.gz
+  checksum: f99671cce46f1902513a6ae676ee5172057efcd5741296c174e5b4c1741c7bea
+
+VERIFICATION RESULTS:
+----------------------------------------
+  total_files: 0
+  verified: True
+
+FILES BACKED UP:
+----------------------------------------
+
+SAMPLE CHECKSUMS (first 5):
+----------------------------------------
+
+================================================================================
+Backup completed successfully: True
+Total files backed up: 0
+================================================================================

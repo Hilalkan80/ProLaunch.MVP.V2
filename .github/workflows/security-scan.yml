@@ -1,0 +1,199 @@
+name: Security Scan
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Python dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install bandit safety semgrep
+
+      - name: Install Frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Run OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'ProLaunch'
+          path: '.'
+          format: 'HTML,JSON,SARIF'
+          args: >
+            --enableExperimental
+            --enableRetired
+            --scan ./backend
+            --scan ./frontend
+            --exclude "**/*.test.js"
+            --exclude "**/*.spec.js"
+            --exclude "**/tests/**"
+            --exclude "**/node_modules/**"
+
+      - name: Upload OWASP Dependency Check results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'reports/dependency-check-report.sarif'
+
+      - name: Run Bandit Python security scanner
+        working-directory: ./backend
+        run: |
+          bandit -r src/ -f json -o bandit-report.json -ll
+          bandit -r src/ -f sarif -o bandit-report.sarif -ll || true
+
+      - name: Upload Bandit scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: './backend/bandit-report.sarif'
+
+      - name: Run Safety Python dependency scanner
+        working-directory: ./backend
+        run: |
+          safety check --json --output safety-report.json || true
+          safety check --output safety-report.txt || true
+
+      - name: Run Semgrep security scanner
+        run: |
+          python -m semgrep --config=auto --sarif --output=semgrep.sarif ./backend/src ./frontend/src || true
+
+      - name: Upload Semgrep scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'semgrep.sarif'
+
+      - name: Run npm audit
+        working-directory: ./frontend
+        run: |
+          npm audit --json --audit-level=moderate > npm-audit-report.json || true
+          npm audit --audit-level=high || true
+
+      - name: Run ESLint security rules
+        working-directory: ./frontend
+        run: |
+          npx eslint src/ --ext .js,.jsx,.ts,.tsx \
+            --rule "no-eval: error" \
+            --rule "no-implied-eval: error" \
+            --rule "no-new-func: error" \
+            --rule "no-script-url: error" \
+            --rule "no-unsafe-innerHTML: error" \
+            --format json --output-file eslint-security-report.json || true
+
+      - name: Check for secrets with TruffleHog
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: main
+          head: HEAD
+          extra_args: --debug --only-verified
+
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python, javascript
+          queries: security-and-quality
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: Authentication Security Tests
+        working-directory: ./backend
+        env:
+          TESTING: true
+          JWT_SECRET_KEY: test_secret_key_for_testing_only
+        run: |
+          pytest tests/security/test_auth_security.py -v --tb=short -m "security" --json-report --json-report-file=auth-security-report.json || true
+
+      - name: Generate Security Report Summary
+        run: |
+          echo "# Security Scan Summary" > security-summary.md
+          echo "## Vulnerabilities Found" >> security-summary.md
+          echo "### Trivy Results:" >> security-summary.md
+          if [ -f trivy-results.sarif ]; then
+            echo "Trivy scan completed successfully" >> security-summary.md
+          fi
+          echo "### Dependency Check Results:" >> security-summary.md
+          if [ -d reports ]; then
+            echo "OWASP Dependency Check completed" >> security-summary.md
+          fi
+          echo "### Python Security Results:" >> security-summary.md
+          if [ -f backend/bandit-report.json ]; then
+            echo "Bandit scan completed" >> security-summary.md
+          fi
+          if [ -f backend/safety-report.txt ]; then
+            echo "Safety check completed" >> security-summary.md
+            cat backend/safety-report.txt >> security-summary.md
+          fi
+          echo "### Node.js Security Results:" >> security-summary.md
+          if [ -f frontend/npm-audit-report.json ]; then
+            echo "npm audit completed" >> security-summary.md
+          fi
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: |
+            trivy-results.sarif
+            reports/
+            backend/bandit-report.json
+            backend/bandit-report.sarif
+            backend/safety-report.json
+            backend/safety-report.txt
+            backend/auth-security-report.json
+            frontend/npm-audit-report.json
+            frontend/eslint-security-report.json
+            semgrep.sarif
+            security-summary.md
+
+      - name: Comment PR with security summary
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            if (fs.existsSync('security-summary.md')) {
+              const summary = fs.readFileSync('security-summary.md', 'utf8');
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: summary
+              });
+            }

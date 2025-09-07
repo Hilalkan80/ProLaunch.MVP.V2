@@ -1,0 +1,18 @@
+{
+  "manual_items": [
+    ".env.local",
+    "docker-compose.override.yml",
+    "Dockerfile",
+    "package.json",
+    "requirements.txt",
+    "security/certificates/",
+    "security/keys/"
+  ],
+  "automated_items": [
+    ".env",
+    ".env.production",
+    "docker-compose.yml",
+    "CLAUDE.md"
+  ],
+  "security_items": []
+}

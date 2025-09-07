@@ -1,0 +1,7 @@
+{
+  "model": "claude-3-5-sonnet",
+  "temperature": 0.7,
+  "max_tokens": 4096,
+  "stop_sequences": [],
+  "top_p": 1.0
+}

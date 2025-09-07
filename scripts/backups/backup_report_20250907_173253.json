@@ -1,0 +1,22 @@
+{
+  "timestamp": "20250907_173253",
+  "version": "v0.17.0",
+  "files_backed_up": [],
+  "checksums": {},
+  "git_info": {},
+  "archive_info": {
+    "path": "C:\\ProLaunch.MVP.V2\\scripts\\backups\\prolaunch_backup_20250907_173253.tar.gz",
+    "size": 82,
+    "type": "tar.gz",
+    "checksum": "f99671cce46f1902513a6ae676ee5172057efcd5741296c174e5b4c1741c7bea"
+  },
+  "verification": {
+    "total_files": 0,
+    "verified": true
+  },
+  "summary": {
+    "total_files_backed_up": 0,
+    "total_checksums_calculated": 0,
+    "backup_successful": true
+  }
+}

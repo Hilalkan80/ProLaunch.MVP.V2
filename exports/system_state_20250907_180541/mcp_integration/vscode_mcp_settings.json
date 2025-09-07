@@ -1,0 +1,6 @@
+{
+  "mcp.languageServer.enabled": true,
+  "mcp.completions.enabled": true,
+  "mcp.telemetry.enabled": false,
+  "ide.suggestions.enabled": true
+}

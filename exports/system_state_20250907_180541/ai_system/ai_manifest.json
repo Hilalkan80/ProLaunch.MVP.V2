@@ -1,0 +1,35 @@
+{
+  "files": {},
+  "directories": {
+    "ai\\configs": {
+      "file_count": 1,
+      "total_size": 118
+    },
+    "ai\\models": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "ai\\embeddings": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "ai\\training": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "ai\\cache": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "ai\\state": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "ai\\llamaindex": {
+      "file_count": 0,
+      "total_size": 0
+    }
+  },
+  "models": {},
+  "embeddings": {}
+}

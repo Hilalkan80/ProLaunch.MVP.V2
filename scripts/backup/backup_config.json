@@ -1,0 +1,39 @@
+{
+  "directories": {
+    "required": [
+      "ai",
+      "milestones",
+      "prompts"
+    ],
+    "optional": [
+      "docs",
+      "tests"
+    ]
+  },
+  "critical_files": [
+    "CLAUDE.md",
+    "requirements.txt",
+    "package.json",
+    ".env.example"
+  ],
+  "exclude_patterns": [
+    "**/__pycache__",
+    "**/.pytest_cache",
+    "**/node_modules",
+    "**/*.pyc",
+    "**/.git"
+  ],
+  "git": {
+    "remote": "origin",
+    "branch": "main",
+    "tag_prefix": "v"
+  },
+  "archive": {
+    "format": "gztar",
+    "retention_days": 30
+  },
+  "verification": {
+    "checksum_algorithm": "sha256",
+    "verify_after_backup": true
+  }
+}

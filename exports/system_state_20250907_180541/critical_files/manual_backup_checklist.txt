@@ -1,0 +1,12 @@
+# Critical Files Manual Backup Checklist
+
+
+The following items require manual backup:
+
+- [ ] .env.local
+- [ ] docker-compose.override.yml
+- [ ] Dockerfile
+- [ ] package.json
+- [ ] requirements.txt
+- [ ] security/certificates/
+- [ ] security/keys/

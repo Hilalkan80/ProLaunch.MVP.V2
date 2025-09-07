@@ -1,0 +1,22 @@
+groups:
+  - name: postgres_rules
+    rules:
+      - record: postgres:query_duration_seconds:avg5m
+        expr: rate(pg_stat_statements_total_time_seconds[5m]) / rate(pg_stat_statements_calls[5m])
+
+  - name: redis_rules
+    rules:
+      - record: redis:memory_used_bytes:avg5m
+        expr: avg_over_time(redis_memory_used_bytes[5m])
+
+  - name: elasticsearch_rules
+    rules:
+      - record: elasticsearch:cluster_health:status
+        expr: elasticsearch_cluster_health_status
+
+  - name: node_rules
+    rules:
+      - record: node:cpu_usage_percent:avg5m
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+      - record: node:memory_usage_percent:avg5m
+        expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100

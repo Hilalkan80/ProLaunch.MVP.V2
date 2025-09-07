@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Development Tools (temporarily disabled)
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: prolaunch-pgadmin
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@prolaunch.local}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin123}
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - prolaunch-network
+
+  # redis-commander:
+  #   image: rediscommander/redis-commander:latest
+  #   container_name: prolaunch-redis-commander
+  #   environment:
+  #     REDIS_HOSTS: local:redis:6379
+  #     HTTP_USER: ${REDIS_COMMANDER_USER:-admin}
+  #     HTTP_PASSWORD: ${REDIS_COMMANDER_PASSWORD:-admin123}
+  #   ports:
+  #     - "8081:8081"
+  #   depends_on:
+  #     - redis
+  #   networks:
+  #     - prolaunch-network
+
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   container_name: prolaunch-mailhog
+  #   ports:
+  #     - "1025:1025"
+  #     - "8025:8025"
+  #   networks:
+  #     - prolaunch-network
+
+  # Development Configuration Overrides
+  postgres:
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf", "-c", "log_statement=all"]
+
+  elasticsearch:
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.enrollment.enabled=false
+
+  kibana:
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=kibana
+
+  logstash:
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]

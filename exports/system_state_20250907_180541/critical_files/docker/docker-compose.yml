@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  # PostgreSQL with pgvector
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: prolaunch
+      POSTGRES_PASSWORD: prolaunch_dev
+      POSTGRES_DB: prolaunch_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U prolaunch"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Test database
+  postgres_test:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: prolaunch
+      POSTGRES_PASSWORD: prolaunch_test
+      POSTGRES_DB: prolaunch_test_db
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U prolaunch"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://prolaunch:prolaunch_dev@postgres:5432/prolaunch_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    command: npm run dev
+
+  # Test runner service
+  test_runner:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.test
+    environment:
+      DATABASE_URL: postgresql://prolaunch:prolaunch_test@postgres_test:5432/prolaunch_test_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET_KEY: test-secret-key
+      ENVIRONMENT: test
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres_test:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: tail -f /dev/null
+
+volumes:
+  postgres_data:

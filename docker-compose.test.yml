@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres_test:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: prolaunch
+      POSTGRES_PASSWORD: prolaunch_test
+      POSTGRES_DB: prolaunch_test_db
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U prolaunch"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis_test:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  test_runner:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.test
+    environment:
+      DATABASE_URL: postgresql://prolaunch:prolaunch_test@postgres_test:5432/prolaunch_test_db
+      REDIS_URL: redis://redis_test:6379
+      JWT_SECRET_KEY: test-secret-key
+      ENVIRONMENT: test
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres_test:
+        condition: service_healthy
+      redis_test:
+        condition: service_healthy

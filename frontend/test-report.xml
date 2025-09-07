@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="C:\ProLaunch.MVP.V2\frontend\src\components\auth\__tests__\LoginForm.test.tsx">
+  </file>
+  <file path="C:\ProLaunch.MVP.V2\frontend\src\lib\auth\__tests__\auth.test.ts">
+  </file>
+</testExecutions>

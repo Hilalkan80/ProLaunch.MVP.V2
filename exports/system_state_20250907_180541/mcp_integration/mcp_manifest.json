@@ -1,0 +1,22 @@
+{
+  "files": {},
+  "directories": {
+    "mcp\\configs": {
+      "file_count": 1,
+      "total_size": 98
+    },
+    "mcp\\api": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "mcp\\adapters": {
+      "file_count": 0,
+      "total_size": 0
+    },
+    "mcp\\status": {
+      "file_count": 0,
+      "total_size": 0
+    }
+  },
+  "configurations": {}
+}

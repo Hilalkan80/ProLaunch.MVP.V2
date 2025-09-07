@@ -1,0 +1,436 @@
+"""
+Shared pytest configuration and fixtures.
+"""
+
+import asyncio
+import os
+import pytest
+import pytest_asyncio
+from datetime import datetime, timedelta
+from typing import AsyncGenerator, Dict, Any
+from unittest.mock import AsyncMock, MagicMock
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.pool import StaticPool
+from fastapi.testclient import TestClient
+from httpx import AsyncClient
+import fakeredis.aioredis
+
+# Import application modules
+from src.main import app
+from src.models.base import Base, get_db
+from src.models.user import User, SubscriptionTier, ExperienceLevel
+from src.models.token import RefreshToken, TokenBlacklist
+from src.core.security import password_manager, jwt_manager
+from src.services.auth_service import auth_service
+from src.infrastructure.redis.redis_mcp import redis_mcp_client
+
+# Test configuration
+TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
+
+
+@pytest_asyncio.fixture(scope="session")
+def event_loop():
+    """Create event loop for the entire test session."""
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+
+@pytest_asyncio.fixture(scope="session")
+async def async_engine():
+    """Create test database engine."""
+    engine = create_async_engine(
+        TEST_DATABASE_URL,
+        poolclass=StaticPool,
+        connect_args={
+            "check_same_thread": False,
+        },
+        echo=False,
+    )
+    
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    
+    yield engine
+    
+    await engine.dispose()
+
+
+@pytest_asyncio.fixture
+async def db_session(async_engine) -> AsyncGenerator[AsyncSession, None]:
+    """Create test database session."""
+    async with AsyncSession(async_engine, expire_on_commit=False) as session:
+        yield session
+        await session.rollback()
+
+
+@pytest.fixture
+def override_get_db(db_session):
+    """Override database dependency."""
+    async def _override_get_db():
+        yield db_session
+    
+    app.dependency_overrides[get_db] = _override_get_db
+    yield
+    app.dependency_overrides.clear()
+
+
+@pytest_asyncio.fixture
+async def redis_client():
+    """Create mock Redis client."""
+    fake_redis = fakeredis.aioredis.FakeRedis()
+    
+    # Mock the redis_mcp_client
+    original_client = redis_mcp_client._client if hasattr(redis_mcp_client, '_client') else None
+    redis_mcp_client._client = fake_redis
+    
+    yield fake_redis
+    
+    # Restore original client
+    if original_client:
+        redis_mcp_client._client = original_client
+    
+    await fake_redis.flushall()
+
+
+@pytest.fixture
+def client(override_get_db):
+    """Create test HTTP client."""
+    with TestClient(app) as client:
+        yield client
+
+
+@pytest_asyncio.fixture
+async def async_client(override_get_db):
+    """Create async test HTTP client."""
+    async with AsyncClient(app=app, base_url="http://test") as client:
+        yield client
+
+
+@pytest_asyncio.fixture
+async def test_user(db_session: AsyncSession) -> User:
+    """Create a test user."""
+    user = User(
+        email="test@example.com",
+        password_hash=password_manager.hash_password("TestPassword123!"),
+        business_idea="Test business idea for testing purposes",
+        target_market="Test market",
+        experience_level=ExperienceLevel.FIRST_TIME,
+        full_name="Test User",
+        company_name="Test Company",
+        subscription_tier=SubscriptionTier.FREE,
+        is_active=True,
+        is_verified=False,
+        login_count=0,
+        failed_login_attempts=0
+    )
+    
+    db_session.add(user)
+    await db_session.commit()
+    await db_session.refresh(user)
+    
+    return user
+
+
+@pytest_asyncio.fixture
+async def verified_user(db_session: AsyncSession) -> User:
+    """Create a verified test user."""
+    user = User(
+        email="verified@example.com",
+        password_hash=password_manager.hash_password("VerifiedPassword123!"),
+        business_idea="Verified business idea",
+        target_market="Verified market",
+        experience_level=ExperienceLevel.SOME_EXPERIENCE,
+        full_name="Verified User",
+        company_name="Verified Company",
+        subscription_tier=SubscriptionTier.STARTER,
+        is_active=True,
+        is_verified=True,
+        login_count=5,
+        failed_login_attempts=0
+    )
+    
+    db_session.add(user)
+    await db_session.commit()
+    await db_session.refresh(user)
+    
+    return user
+
+
+@pytest_asyncio.fixture
+async def locked_user(db_session: AsyncSession) -> User:
+    """Create a locked test user."""
+    user = User(
+        email="locked@example.com",
+        password_hash=password_manager.hash_password("LockedPassword123!"),
+        business_idea="Locked business idea",
+        target_market="Locked market",
+        experience_level=ExperienceLevel.EXPERIENCED,
+        full_name="Locked User",
+        company_name="Locked Company",
+        subscription_tier=SubscriptionTier.FREE,
+        is_active=True,
+        is_verified=False,
+        login_count=0,
+        failed_login_attempts=5,
+        locked_until=datetime.utcnow() + timedelta(minutes=30)
+    )
+    
+    db_session.add(user)
+    await db_session.commit()
+    await db_session.refresh(user)
+    
+    return user
+
+
+@pytest_asyncio.fixture
+async def disabled_user(db_session: AsyncSession) -> User:
+    """Create a disabled test user."""
+    user = User(
+        email="disabled@example.com",
+        password_hash=password_manager.hash_password("DisabledPassword123!"),
+        business_idea="Disabled business idea",
+        target_market="Disabled market",
+        experience_level=ExperienceLevel.FIRST_TIME,
+        full_name="Disabled User",
+        company_name="Disabled Company",
+        subscription_tier=SubscriptionTier.FREE,
+        is_active=False,
+        is_verified=False,
+        login_count=0,
+        failed_login_attempts=0
+    )
+    
+    db_session.add(user)
+    await db_session.commit()
+    await db_session.refresh(user)
+    
+    return user
+
+
+@pytest_asyncio.fixture
+async def auth_tokens(test_user: User, db_session: AsyncSession) -> Dict[str, Any]:
+    """Create authentication tokens for test user."""
+    tokens = await auth_service._generate_auth_tokens(db_session, test_user)
+    return tokens
+
+
+@pytest_asyncio.fixture
+async def expired_tokens(test_user: User) -> Dict[str, str]:
+    """Create expired authentication tokens."""
+    # Create tokens with very short expiry
+    original_expire = jwt_manager.access_token_expire_minutes
+    jwt_manager.access_token_expire_minutes = -1  # Already expired
+    
+    access_token, _ = jwt_manager.create_access_token(
+        str(test_user.id),
+        test_user.email,
+        test_user.subscription_tier.value
+    )
+    
+    # Restore original expiry
+    jwt_manager.access_token_expire_minutes = original_expire
+    
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
+
+
+@pytest.fixture
+def valid_registration_data():
+    """Valid user registration data."""
+    return {
+        "email": "newuser@example.com",
+        "password": "NewUserPassword123!",
+        "business_idea": "A revolutionary new business idea that will change everything",
+        "target_market": "Young professionals aged 25-35",
+        "experience_level": "first-time",
+        "full_name": "New User",
+        "company_name": "New Company"
+    }
+
+
+@pytest.fixture
+def valid_login_data():
+    """Valid user login data."""
+    return {
+        "email": "test@example.com",
+        "password": "TestPassword123!",
+        "device_id": "test-device-123",
+        "device_name": "Test Device"
+    }
+
+
+@pytest.fixture
+def invalid_login_data():
+    """Invalid user login data."""
+    return {
+        "email": "test@example.com",
+        "password": "WrongPassword123!",
+        "device_id": "test-device-123",
+        "device_name": "Test Device"
+    }
+
+
+@pytest.fixture
+def security_headers():
+    """Expected security headers."""
+    return {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Content-Security-Policy": "default-src 'self'",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+
+
+@pytest.fixture
+def mock_rate_limiter():
+    """Mock rate limiter."""
+    mock = MagicMock()
+    mock.is_allowed = AsyncMock(return_value=True)
+    mock.record_request = AsyncMock()
+    return mock
+
+
+@pytest.fixture
+def mock_email_service():
+    """Mock email service."""
+    mock = MagicMock()
+    mock.send_verification_email = AsyncMock()
+    mock.send_password_reset_email = AsyncMock()
+    mock.send_security_alert_email = AsyncMock()
+    return mock
+
+
+@pytest.fixture
+def mock_audit_logger():
+    """Mock audit logger."""
+    mock = MagicMock()
+    mock.log_event = AsyncMock()
+    mock.log_security_event = AsyncMock()
+    return mock
+
+
+# Parametrized fixtures for testing different scenarios
+
+@pytest.fixture(params=[
+    "weak123",
+    "PASSWORD123",
+    "password123",
+    "Pass123",
+    "12345678",
+    "password",
+    "P@ss",
+])
+def weak_password(request):
+    """Weak passwords for validation testing."""
+    return request.param
+
+
+@pytest.fixture(params=[
+    "Password123!",
+    "MyStr0ngP@ssw0rd",
+    "C0mpl3x_P@ssw0rd!",
+    "S3cur3-P@55w0rd#",
+])
+def strong_password(request):
+    """Strong passwords for validation testing."""
+    return request.param
+
+
+@pytest.fixture(params=[
+    "invalid-email",
+    "@example.com",
+    "user@",
+    "user.example.com",
+    "",
+    "user@.com",
+])
+def invalid_email(request):
+    """Invalid email addresses for validation testing."""
+    return request.param
+
+
+@pytest.fixture(params=[
+    "user@example.com",
+    "test.user@domain.co.uk",
+    "user.name+tag@example.com",
+    "user123@test-domain.com",
+])
+def valid_email(request):
+    """Valid email addresses for validation testing."""
+    return request.param
+
+
+# Security testing fixtures
+
+@pytest.fixture
+def malicious_payloads():
+    """Common malicious payloads for security testing."""
+    return {
+        "sql_injection": [
+            "'; DROP TABLE users; --",
+            "' OR '1'='1",
+            "' UNION SELECT * FROM users --",
+            "'; INSERT INTO users VALUES ('hacker', 'password'); --"
+        ],
+        "xss": [
+            "<script>alert('XSS')</script>",
+            "javascript:alert('XSS')",
+            "<img src=x onerror=alert('XSS')>",
+            "'><script>alert('XSS')</script>"
+        ],
+        "path_traversal": [
+            "../../../etc/passwd",
+            "....//....//....//etc/passwd",
+            "..%2f..%2f..%2fetc%2fpasswd",
+        ],
+        "command_injection": [
+            "; cat /etc/passwd",
+            "| whoami",
+            "&& ls -la",
+            "`uname -a`"
+        ],
+        "ldap_injection": [
+            "*)(uid=*",
+            "admin)(&(password=*",
+            "*)(|(password=*))",
+        ],
+        "header_injection": [
+            "test\r\nX-Injected-Header: injected",
+            "test\nSet-Cookie: injected=true",
+        ]
+    }
+
+
+@pytest.fixture
+def rate_limit_scenarios():
+    """Rate limiting test scenarios."""
+    return {
+        "login_attempts": {
+            "endpoint": "/api/v1/auth/login",
+            "limit": 5,
+            "window": 300,  # 5 minutes
+        },
+        "registration_attempts": {
+            "endpoint": "/api/v1/auth/register",
+            "limit": 3,
+            "window": 3600,  # 1 hour
+        },
+        "password_reset_attempts": {
+            "endpoint": "/api/v1/auth/request-password-reset",
+            "limit": 3,
+            "window": 3600,  # 1 hour
+        },
+        "token_refresh_attempts": {
+            "endpoint": "/api/v1/auth/refresh",
+            "limit": 10,
+            "window": 3600,  # 1 hour
+        }
+    }

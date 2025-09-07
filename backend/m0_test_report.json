@@ -1,0 +1,88 @@
+{
+  "timestamp": "2025-09-06T20:38:22.075074",
+  "summary": {
+    "tests_run": 11,
+    "tests_passed": 11,
+    "tests_failed": 0,
+    "success_rate": 100.0,
+    "total_time": 2.393470525741577,
+    "average_time": 0.21758822961287064
+  },
+  "results": [
+    {
+      "name": "Basic M0 Generation",
+      "status": "PASSED",
+      "duration": 0.11063265800476074,
+      "error": null
+    },
+    {
+      "name": "Viability Score Calculation",
+      "status": "PASSED",
+      "duration": 0.21531248092651367,
+      "error": null
+    },
+    {
+      "name": "Lean Canvas Generation",
+      "status": "PASSED",
+      "duration": 0.10886287689208984,
+      "error": null
+    },
+    {
+      "name": "60-Second Generation Requirement",
+      "status": "PASSED",
+      "duration": 0.10854387283325195,
+      "error": null
+    },
+    {
+      "name": "Parallel Processing Performance",
+      "status": "PASSED",
+      "duration": 0.10851097106933594,
+      "error": null
+    },
+    {
+      "name": "Memory Bank MCP Integration",
+      "status": "PASSED",
+      "duration": 0.029172658920288086,
+      "error": null
+    },
+    {
+      "name": "Redis MCP Caching",
+      "status": "PASSED",
+      "duration": 0.046655893325805664,
+      "error": null
+    },
+    {
+      "name": "Ref MCP Functionality",
+      "status": "PASSED",
+      "duration": 0.031278133392333984,
+      "error": null
+    },
+    {
+      "name": "Puppeteer MCP Research",
+      "status": "PASSED",
+      "duration": 1.5277595520019531,
+      "error": null
+    },
+    {
+      "name": "Graceful Error Handling",
+      "status": "PASSED",
+      "duration": 0.10670781135559082,
+      "error": null
+    },
+    {
+      "name": "Basic Cache Operations",
+      "status": "PASSED",
+      "duration": 3.361701965332031e-05,
+      "error": null
+    }
+  ],
+  "focus_areas": {
+    "Memory Bank MCP": true,
+    "Redis MCP Caching": true,
+    "Ref MCP Functionality": true,
+    "Puppeteer MCP Research": true,
+    "60s Performance Target": true,
+    "Error Handling": true
+  },
+  "coverage_percent": 120.0
+}
